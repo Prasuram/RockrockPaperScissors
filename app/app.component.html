@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <mat-card color="primary">
+        <h1>Select play Mode</h1>
+        <button mat-button (click)='start()'>Player VS Computer</button>
+        <button mat-button (click)='computer()'>Computer VS Computer</button>
+      </mat-card>
+    </div>
+    <div class="col-md-4">
+      <mat-card>
+       <div class="timer">
+          <div class="time">
+            {{startTimer}}
+          </div>
+       </div>
+       <div class="row">
+         <div class="col-md-12">
+          <div class="badge" id="comp-label"><p>Computer</p> : {{compSelected}}</div>
+          <span id="comp-score">{{compScore}}</span>
+           
+           <mat-progress-bar mode="determinate" value="100" color="accent"></mat-progress-bar>
+           <div class="badge" id="user-label"><p>{{playerDisp}}</p> : {{userSelected}}</div>
+           <span id="user-score">{{userScore}}</span>
+           
+         </div>
+       </div>
+       <div class="row" id="hand">
+         <h1>Choose your move</h1>
+         <div class="col-md-4">
+           <img src="../assets/first.png" (click)='pickOne("rock")' >
+           <p>Rock</p>
+         </div>
+         <div class="col-md-4">
+          <img src="../assets/second.png" (click)='pickOne("paper")'>
+          <p>paper</p>
+        </div>
+        <div class="col-md-4">
+          <img src="../assets/third.png" (click)='pickOne("scissors")'>
+          <p>scissors</p>
+        </div>
+       </div>
+      </mat-card>
+  </div>
+    <div class="col-md-4">
+      <mat-card>
+        <div class="result">
+          <p *ngIf="status">{{userSelected}} {{action}} {{compSelected}}{{status}} </p>
+        </div>
+        <p id="action-message" *ngIf="!status">Results Here</p>
+        <p id="action-message" *ngIf="status"></p>
+      <div class="row">
+        <div class="col-md-6">
+        <button mat-button  (click)="reset()">Play again!</button>
+        </div>
+        <div class="col-md-6">
+        <button mat-button (click)='computer()'>Change mode</button>
+        </div>
+      </div>
+      </mat-card>
+  </div>
+  </div>
+</div>
